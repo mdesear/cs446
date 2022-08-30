@@ -1,0 +1,38 @@
+Misha Desear
+CS 446 PA 1
+Part 2 questions
+
+1. A system call is the method by which a program requests services from the kernel of the operating system it is executed on. The system calls implemented in the C program are as follows:
+
+	- opening and closing of input, output, and redirect file streams
+	- creation of output files
+	- reading and writing from and to file streams
+	- execution of execvp commands (e.g. ls, -la, clear)
+
+2. Both execvp and execve are functions that replace the current working process with a new process, and both pass char* arrays as parameters to the exec'd process. execve allows the programmer to pass an additional char* array that is composed of a set of strings, which are then added to the spawned processes environment before the exec'd process launches, while execvp does not. execvp uses the environment variable PATH to search for the named executable file to execute, while execve requires an absolute or relative file path to precede the filename of the executable if not in the current working directory. 
+
+3. Alternate system calls to stop a program in C and considerations that must be taken are:
+
+	- exit(): This function is not a program control statement and does not affect control flow. 
+		It interrupts and closes the current program/process in execution and transfers control to the operating system. 
+		Unlike kill, it does not destroy the process, and is usually used when an exception is caught in order to "gracefully" exit by invoking end(). 
+		exit also flushes stdio buffers prior to ending a process, cleans up user-mode constructs, and executes user-provided cleanup functions.
+		If any functions have been registered with the function atexit(), they will be executed when exit() is called.
+		
+	- _Exit(): Similar to exit(), but doesn't perform cleanup for user-mode constructs nor executes user-provided cleanup functions. It only performs kernel cleanup.
+		It also does not invoke end(). _Exit() is used to end child processes when the exec fails, as exit() could interfere with the parent process'
+		data by calling its atexit handlers, calling its signal handlers, and/or flushing its stdio buffers. It can also be used in the rare case where
+		a child process does not use exec. In all other cases, exit() can be used.
+		
+	- quick_exit(): Similar to _Exit() in that it doesn't completely clean out resources nor does it call destructors. Before terminating the process, it calls
+		all functions that are registered using the function at_quick_exit(). It then returns a status value to hand over control to the host environment.
+		It can be used in cases where some cleanup is necessary, as _Exit() could leave potentially behind artifacts such as half-written files.
+	
+	- abort(): Similar to the two prior system calls in that no cleanup is performed. It terminates the process by raising the SIGABRT signal, which causes
+		abnormal program termination. However, the SIGABRT signal can be caught by a signal handler, and if it does not return then program termination
+		will not occur. When abort() terminates a program, it returns a code defined in implementation that indicates unsuccessful termination.
+		abort() is used in unexpected error cases that would not be caught by exit() such as program bugs which shouldn't logically occur.
+		
+kill() is the easiest to use in this program as it sends a signal to quickly terminate the forked child processes which cannot be ignored or blocked. exit() would take longer as it performs cleanup before voluntarily terminating a process, and could cause errors as a result of cleanup (e.g. flushing a buffer twice). _Exit() is not necessary as it is mostly used as a backup in the case that exec fails. quick_exit() is not necessary as we do not need to perform any cleanup processes before terminating. abort() is not necessary as it is unlikely that a bug would occur, and abnormal program termination/core dumping is not desirable.
+
+4. There are several ways this program could be improved. Handling of read, write, and redirect streams could be performed in a separate function as opposed to main. Rather than using kill(), we could handle errors using the global variable errno and perror() and strerror() to return an error description and point to the specific errno, and/or pass EXIT_SUCCESS/EXIT_FAILURE to exit(). parseInput() could also be used to eliminate trailing new lines and carriage returns (I actually added newlines to the strtok delimiter in parseInput()). Additional edge cases could be considered such as a user entering nothing for the input file name but including a redirect symbol and output file name in batch mode (which causes an infinite loop in this program). 

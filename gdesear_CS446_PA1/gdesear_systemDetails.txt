@@ -1,0 +1,64 @@
+CPU information: 
+processor	: 0
+vendor_id	: AuthenticAMD
+cpu family	: 25
+model		: 80
+model name	: AMD Ryzen 7 5800H with Radeon Graphics
+stepping	: 0
+microcode	: 0x6000626
+cpu MHz		: 3194.000
+cache size	: 512 KB
+physical id	: 0
+siblings	: 1
+core id		: 0
+cpu cores	: 1
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 16
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt rdtscp lm constant_tsc rep_good nopl nonstop_tsc cpuid extd_apicid tsc_known_freq pni pclmulqdq monitor ssse3 cx16 sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx rdrand hypervisor lahf_lm cr8_legacy abm sse4a misalignsse 3dnowprefetch vmmcall fsgsbase avx2 invpcid rdseed clflushopt arat
+bugs		: fxsave_leak sysret_ss_attrs null_seg spectre_v1 spectre_v2 spec_store_bypass
+bogomips	: 6388.00
+TLB size	: 2560 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 48 bits physical, 48 bits virtual
+power management:
+
+
+
+Linux version 5.13.0-30-generic (buildd@lcy02-amd64-003) (gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, GNU ld (GNU Binutils for Ubuntu) 2.34) #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022
+
+
+Time since last boot (secs): 
+13832.36 12824.10
+
+
+Timestamp userspace: Wed 2022-02-23 21:19:25 PST
+
+
+Number of disk requests: 
+   7       0 loop0 14 0 34 0 0 0 0 0 0 12 0 0 0 0 0 0 0
+   7       1 loop1 48 0 718 13 0 0 0 0 0 40 13 0 0 0 0 0 0
+   7       2 loop2 57 0 2112 24 0 0 0 0 0 60 24 0 0 0 0 0 0
+   7       3 loop3 43 0 694 12 0 0 0 0 0 28 12 0 0 0 0 0 0
+   7       4 loop4 50 0 726 15 0 0 0 0 0 32 15 0 0 0 0 0 0
+   7       5 loop5 45 0 702 16 0 0 0 0 0 44 16 0 0 0 0 0 0
+   7       6 loop6 57 0 2186 21 0 0 0 0 0 76 21 0 0 0 0 0 0
+   7       7 loop7 62 0 2152 21 0 0 0 0 0 80 21 0 0 0 0 0 0
+  11       0 sr0 9 0 4 2 0 0 0 0 0 24 2 0 0 0 0 0 0
+   8       0 sda 13855 5181 1118432 8236 14562 9684 263634 12397 0 29028 27005 0 0 0 0 2183 6371
+   8       1 sda1 138 21 10974 44 2 0 2 0 0 96 45 0 0 0 0 0 0
+   8       2 sda2 2 0 4 0 0 0 0 0 0 8 0 0 0 0 0 0 0
+   8       5 sda5 13596 5160 1103202 8150 14560 9684 263632 12397 0 28900 20547 0 0 0 0 0 0
+   7       8 loop8 55 0 2146 20 0 0 0 0 0 28 20 0 0 0 0 0 0
+   7       9 loop9 62 0 2134 14 0 0 0 0 0 56 14 0 0 0 0 0 0
+   7      10 loop10 51 0 728 13 0 0 0 0 0 44 13 0 0 0 0 0 0
+   7      11 loop11 43 0 696 13 0 0 0 0 0 36 13 0 0 0 0 0 0
+   7      12 loop12 48 0 718 12 0 0 0 0 0 28 12 0 0 0 0 0 0
+   7      13 loop13 12 0 36 0 0 0 0 0 0 8 0 0 0 0 0 0 0
+
+
+processes 4205
